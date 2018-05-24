@@ -129,12 +129,16 @@ let program = new Block([
             new NumberLiteral(10)
         )
     )),
-    new Print(new Var("x")),
-    new AssignVar("x", new Plus(
-        new Var("x"),
-        new NumberLiteral(2)
-    )),
-    new Print(new Var("x")),
+    new For(new NumberLiteral(1),
+            new NumberLiteral(10),
+            "i",
+            new Block([
+                new AssignVar("x", new Plus(
+                    new Var("x"),
+                    new NumberLiteral(2)
+                )),
+                new Print(new Var("x"))
+            ]))
 ])
 
 program.eval(context);
